@@ -43,5 +43,14 @@
       "ratio": 0.975
     }
   },
-  "test_classes": 9
+  "test_classes": 9,
+  "mutation": {
+    "total": 80,
+    "statuses": {
+      "KILLED": 74,
+      "SURVIVED": 5,
+      "TIMED_OUT": 1
+    },
+    "assertion_kill_ratio": 0.925
+  }
 }
