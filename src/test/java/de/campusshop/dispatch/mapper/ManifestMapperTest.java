@@ -4,12 +4,40 @@ import de.campusshop.dispatch.dto.TariffResponse;
 import de.campusshop.dispatch.model.RatedParcel;
 import de.campusshop.dispatch.model.Rating;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
+import java.util.stream.Stream;
 import java.util.List;
 import static de.campusshop.dispatch.TestFixtures.*;
 import static org.assertj.core.api.Assertions.*;
 
 class ManifestMapperTest {
     private final ManifestMapper mapper = new ManifestMapper();
+    @ParameterizedTest @CsvSource({"0,1,0.1", "1,0,0.1", "1,1,0", "0,0,0"})
+    void zeroTariffValuesAreValid(String base, String price, String fuel) {
+        var response = new TariffResponse("TRF-1", "Standard", dec(base), dec(price), dec(fuel), 2);
+        var tariff = mapper.toTariff(response);
+        assertThat(tariff.baseFee()).isEqualTo(response.baseFee());
+        assertThat(tariff.pricePerKg()).isEqualTo(response.pricePerKg());
+        assertThat(tariff.fuelSurchargeRate()).isEqualTo(response.fuelSurchargeRate());
+    }
+    static Stream<TariffResponse> invalidTariffs() {
+        return Stream.of(
+            new TariffResponse(null, "Standard", dec("1"), dec("1"), dec("0"), 2),
+            new TariffResponse(" ", "Standard", dec("1"), dec("1"), dec("0"), 2),
+            new TariffResponse("TRF-1", null, dec("1"), dec("1"), dec("0"), 2),
+            new TariffResponse("TRF-1", " ", dec("1"), dec("1"), dec("0"), 2),
+            new TariffResponse("TRF-1", "Standard", dec("1"), null, dec("0"), 2),
+            new TariffResponse("TRF-1", "Standard", dec("1"), dec("1"), null, 2),
+            new TariffResponse("TRF-1", "Standard", dec("-1"), dec("1"), dec("0"), 2),
+            new TariffResponse("TRF-1", "Standard", dec("1"), dec("-1"), dec("0"), 2),
+            new TariffResponse("TRF-1", "Standard", dec("1"), dec("1"), dec("-1"), 2));
+    }
+    @ParameterizedTest @MethodSource("invalidTariffs")
+    void rejectsInvalidFieldsIndividually(TariffResponse response) {
+        assertThatIllegalArgumentException().isThrownBy(() -> mapper.toTariff(response));
+    }
     @Test void mapsExternalTariffToDomainModel() {
         assertThat(mapper.toTariff(new TariffResponse("TRF-1", "Standard", dec("4.50"), dec("1.20"), dec("0.10"), 2)))
                 .isEqualTo(STANDARD);

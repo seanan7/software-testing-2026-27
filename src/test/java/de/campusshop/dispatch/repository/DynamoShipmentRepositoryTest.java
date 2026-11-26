@@ -79,9 +79,10 @@ class DynamoShipmentRepositoryTest {
         var firstMap = stored(first);
         var laterMap = stored(later);
         Map<String, AttributeValue> continuation = Map.of("shipmentRef", s(REF));
-        when(dynamo.query(any(QueryRequest.class))).thenReturn(
-                QueryResponse.builder().items(firstMap).lastEvaluatedKey(continuation).build(),
-                QueryResponse.builder().items(laterMap).build());
+        when(dynamo.query(any(QueryRequest.class)))
+                .thenReturn(QueryResponse.builder().items(firstMap).lastEvaluatedKey(continuation).build())
+                .thenReturn(QueryResponse.builder().items(laterMap).build())
+                .thenThrow(new AssertionError("Query must stop after the terminal page"));
         assertThat(repository.listByCarrier(CARRIER)).containsExactly(first, later);
         var request = ArgumentCaptor.forClass(QueryRequest.class);
         verify(dynamo, times(2)).query(request.capture());
@@ -97,7 +98,8 @@ class DynamoShipmentRepositoryTest {
         verify(dynamo, never()).scan(any(ScanRequest.class));
     }
     @Test void emptyCarrierQueryReturnsAnEmptyList() {
-        when(dynamo.query(any(QueryRequest.class))).thenReturn(QueryResponse.builder().build());
+        when(dynamo.query(any(QueryRequest.class))).thenReturn(QueryResponse.builder().build())
+                .thenThrow(new AssertionError("Empty query result must terminate"));
         assertThat(repository.listByCarrier(CARRIER)).isEmpty();
     }
     @Test void removesByPartitionKey() {

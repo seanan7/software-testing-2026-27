@@ -1,0 +1,7 @@
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="de.campusshop.dispatch.repository.S3ManifestArchiveTest" time="0.411" tests="5" errors="0" skipped="0" failures="0">
+  <testcase name="missingKeyReturnsEmpty" classname="de.campusshop.dispatch.repository.S3ManifestArchiveTest" time="0.383" />
+  <testcase name="removesTheConfiguredObject" classname="de.campusshop.dispatch.repository.S3ManifestArchiveTest" time="0.003" />
+  <testcase name="storageFailureIsNotMisreportedAsMissing" classname="de.campusshop.dispatch.repository.S3ManifestArchiveTest" time="0.001" />
+  <testcase name="archivesTheOriginalBytesAndContentType" classname="de.campusshop.dispatch.repository.S3ManifestArchiveTest" time="0.009" />
+  <testcase name="retrievesVerbatimBytes" classname="de.campusshop.dispatch.repository.S3ManifestArchiveTest" time="0.012" />
+</testsuite>

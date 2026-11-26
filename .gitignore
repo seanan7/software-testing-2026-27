@@ -6,3 +6,5 @@ work/
 *.zip
 .DS_Store
 .m2/
+__pycache__/
+*.pyc

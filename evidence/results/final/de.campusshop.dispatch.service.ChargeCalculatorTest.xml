@@ -1,0 +1,9 @@
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="de.campusshop.dispatch.service.ChargeCalculatorTest" time="0.021" tests="7" errors="0" skipped="0" failures="0">
+  <testcase name="preservesPrecisionUntilTheFinalRounding" classname="de.campusshop.dispatch.service.ChargeCalculatorTest" time="0.0" />
+  <testcase name="roundsHalfUp(String, String)[1]" classname="de.campusshop.dispatch.service.ChargeCalculatorTest" time="0.002" />
+  <testcase name="roundsHalfUp(String, String)[2]" classname="de.campusshop.dispatch.service.ChargeCalculatorTest" time="0.001" />
+  <testcase name="roundsHalfUp(String, String)[3]" classname="de.campusshop.dispatch.service.ChargeCalculatorTest" time="0.0" />
+  <testcase name="roundsHalfUp(String, String)[4]" classname="de.campusshop.dispatch.service.ChargeCalculatorTest" time="0.001" />
+  <testcase name="roundsHalfUp(String, String)[5]" classname="de.campusshop.dispatch.service.ChargeCalculatorTest" time="0.006" />
+  <testcase name="pricesTheWorkedExample" classname="de.campusshop.dispatch.service.ChargeCalculatorTest" time="0.001" />
+</testsuite>

@@ -56,7 +56,9 @@ public class ShipmentRegistrationService {
      * @param manifest    the parsed and validated manifest
      * @param rawManifest the request body exactly as received; this is what goes to S3
      */
-    public ShipmentRecord register(DispatchManifest manifest, byte[] rawManifest) {
+    // Serialises the check/write sequence within this service instance. Distributed/GSI
+    // consistency still requires a stronger persistence design than this single-process lock.
+    public synchronized ShipmentRecord register(DispatchManifest manifest, byte[] rawManifest) {
         boolean duplicate;
         try {
             duplicate = shipments.manifestExists(manifest.manifestNo());

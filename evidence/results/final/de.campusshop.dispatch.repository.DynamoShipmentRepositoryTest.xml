@@ -1,0 +1,10 @@
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="de.campusshop.dispatch.repository.DynamoShipmentRepositoryTest" time="0.602" tests="8" errors="0" skipped="0" failures="0">
+  <testcase name="writesExactlyTheNineAttributesWithNativeNumbers" classname="de.campusshop.dispatch.repository.DynamoShipmentRepositoryTest" time="0.535" />
+  <testcase name="moneyIsNotWrittenInScientificNotation" classname="de.campusshop.dispatch.repository.DynamoShipmentRepositoryTest" time="0.001" />
+  <testcase name="duplicateCheckQueriesManifestIndexRatherThanScanning" classname="de.campusshop.dispatch.repository.DynamoShipmentRepositoryTest" time="0.04" />
+  <testcase name="emptyCarrierQueryReturnsAnEmptyList" classname="de.campusshop.dispatch.repository.DynamoShipmentRepositoryTest" time="0.002" />
+  <testcase name="carrierQueryFollowsEveryPageInAscendingDateOrder" classname="de.campusshop.dispatch.repository.DynamoShipmentRepositoryTest" time="0.005" />
+  <testcase name="removesByPartitionKey" classname="de.campusshop.dispatch.repository.DynamoShipmentRepositoryTest" time="0.006" />
+  <testcase name="missingItemIsEmpty" classname="de.campusshop.dispatch.repository.DynamoShipmentRepositoryTest" time="0.007" />
+  <testcase name="getsByPartitionKeyAndReconstructsEveryField" classname="de.campusshop.dispatch.repository.DynamoShipmentRepositoryTest" time="0.003" />
+</testsuite>

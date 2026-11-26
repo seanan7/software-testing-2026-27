@@ -1,0 +1,20 @@
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="de.campusshop.dispatch.mapper.ManifestMapperTest" time="0.173" tests="18" errors="0" skipped="0" failures="0">
+  <testcase name="mapsExternalTariffToDomainModel" classname="de.campusshop.dispatch.mapper.ManifestMapperTest" time="0.001" />
+  <testcase name="rejectsInvalidFieldsIndividually(TariffResponse)[1]" classname="de.campusshop.dispatch.mapper.ManifestMapperTest" time="0.008" />
+  <testcase name="rejectsInvalidFieldsIndividually(TariffResponse)[2]" classname="de.campusshop.dispatch.mapper.ManifestMapperTest" time="0.001" />
+  <testcase name="rejectsInvalidFieldsIndividually(TariffResponse)[3]" classname="de.campusshop.dispatch.mapper.ManifestMapperTest" time="0.0" />
+  <testcase name="rejectsInvalidFieldsIndividually(TariffResponse)[4]" classname="de.campusshop.dispatch.mapper.ManifestMapperTest" time="0.001" />
+  <testcase name="rejectsInvalidFieldsIndividually(TariffResponse)[5]" classname="de.campusshop.dispatch.mapper.ManifestMapperTest" time="0.001" />
+  <testcase name="rejectsInvalidFieldsIndividually(TariffResponse)[6]" classname="de.campusshop.dispatch.mapper.ManifestMapperTest" time="0.0" />
+  <testcase name="rejectsInvalidFieldsIndividually(TariffResponse)[7]" classname="de.campusshop.dispatch.mapper.ManifestMapperTest" time="0.0" />
+  <testcase name="rejectsInvalidFieldsIndividually(TariffResponse)[8]" classname="de.campusshop.dispatch.mapper.ManifestMapperTest" time="0.0" />
+  <testcase name="rejectsInvalidFieldsIndividually(TariffResponse)[9]" classname="de.campusshop.dispatch.mapper.ManifestMapperTest" time="0.0" />
+  <testcase name="mapsEveryStoredAttributeToRecordAndSummary" classname="de.campusshop.dispatch.mapper.ManifestMapperTest" time="0.069" />
+  <testcase name="zeroTariffValuesAreValid(String, String, String)[1]" classname="de.campusshop.dispatch.mapper.ManifestMapperTest" time="0.001" />
+  <testcase name="zeroTariffValuesAreValid(String, String, String)[2]" classname="de.campusshop.dispatch.mapper.ManifestMapperTest" time="0.0" />
+  <testcase name="zeroTariffValuesAreValid(String, String, String)[3]" classname="de.campusshop.dispatch.mapper.ManifestMapperTest" time="0.0" />
+  <testcase name="zeroTariffValuesAreValid(String, String, String)[4]" classname="de.campusshop.dispatch.mapper.ManifestMapperTest" time="0.001" />
+  <testcase name="rejectsIncompleteTariffs" classname="de.campusshop.dispatch.mapper.ManifestMapperTest" time="0.001" />
+  <testcase name="mapsEveryRatedParcelField" classname="de.campusshop.dispatch.mapper.ManifestMapperTest" time="0.001" />
+  <testcase name="mapsUnratedParcelWithoutInventingCharges" classname="de.campusshop.dispatch.mapper.ManifestMapperTest" time="0.001" />
+</testsuite>

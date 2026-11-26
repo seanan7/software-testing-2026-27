@@ -1,0 +1,47 @@
+{
+  "scope": "local gate component; not a hosted workflow run",
+  "cases": [
+    {
+      "case": "passing-recorded-results",
+      "expected_exit": 0,
+      "observed_exit": 0,
+      "classification": "recorded actual pass"
+    },
+    {
+      "case": "test-failure",
+      "expected_exit": 1,
+      "observed_exit": 1,
+      "classification": "deliberate gate fault injection"
+    },
+    {
+      "case": "skipped-test",
+      "expected_exit": 1,
+      "observed_exit": 1,
+      "classification": "deliberate gate fault injection"
+    },
+    {
+      "case": "line-below-target",
+      "expected_exit": 1,
+      "observed_exit": 1,
+      "classification": "deliberate gate fault injection"
+    },
+    {
+      "case": "branch-below-target",
+      "expected_exit": 1,
+      "observed_exit": 1,
+      "classification": "deliberate gate fault injection"
+    },
+    {
+      "case": "mutation-below-target",
+      "expected_exit": 1,
+      "observed_exit": 1,
+      "classification": "deliberate gate fault injection"
+    },
+    {
+      "case": "mutation-execution-error",
+      "expected_exit": 1,
+      "observed_exit": 1,
+      "classification": "deliberate gate fault injection"
+    }
+  ]
+}

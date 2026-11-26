@@ -41,6 +41,14 @@ class ShipmentApiIntegrationTest {
     @Test void healthIsUp() throws Exception {
         mvc.perform(get("/actuator/health")).andExpect(status().isOk()).andExpect(jsonPath("$.status").value("UP"));
     }
+    @Test void frameworkRejectionsAlsoUseTheStableErrorBody() throws Exception {
+        mvc.perform(post("/shipments/" + REF)).andExpect(status().isMethodNotAllowed())
+                .andExpect(jsonPath("$.errorCode").value("REQUEST_REJECTED"));
+        mvc.perform(post("/dispatch/manifests").contentType("text/plain").content("{}"))
+                .andExpect(status().isUnsupportedMediaType()).andExpect(jsonPath("$.errorCode").value("REQUEST_REJECTED"));
+        mvc.perform(get("/not-an-api-route")).andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.errorCode").value("REQUEST_REJECTED"));
+    }
     JsonNode register(byte[] bytes) throws Exception {
         var response = mvc.perform(post("/dispatch/manifests").contentType("application/json").content(bytes))
                 .andExpect(status().isCreated()).andReturn().getResponse();

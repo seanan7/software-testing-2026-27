@@ -9,6 +9,14 @@ class SimulationTariffClientTest {
     private final SimulationTariffClient client = new SimulationTariffClient();
 
     @Test
+    void acceptsCatalogEndpointsAndRejectsNullAndOversizedNumbers() {
+        assertThat(client.findTariff("TRF-1")).isPresent();
+        assertThat(client.findTariff("TRF-500")).isPresent();
+        assertThat(client.findTariff(null)).isEmpty();
+        assertThat(client.findTariff("TRF-999999999999999999999")).isEmpty();
+    }
+
+    @Test
     void matchesTheReferenceCatalog() {
         var standard = client.findTariff("TRF-1").orElseThrow();
         assertThat(standard.serviceName()).isEqualTo("Standard");

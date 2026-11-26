@@ -1,0 +1,4 @@
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="de.campusshop.dispatch.config.ConfigurationTest" time="2.071" tests="2" errors="0" skipped="0" failures="0">
+  <testcase name="buildsExternalSdkClientsFromProvidedSettingsWithoutProvisioningResources" classname="de.campusshop.dispatch.config.ConfigurationTest" time="2.063" />
+  <testcase name="registrationClockUsesUtc" classname="de.campusshop.dispatch.config.ConfigurationTest" time="0.006" />
+</testsuite>

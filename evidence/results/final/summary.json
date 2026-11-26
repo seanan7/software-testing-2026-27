@@ -1,0 +1,54 @@
+{
+  "tests": {
+    "tests": 109,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "coverage": {
+    "INSTRUCTION": {
+      "missed": 5,
+      "covered": 1925,
+      "total": 1930,
+      "ratio": 0.9974093264248705
+    },
+    "BRANCH": {
+      "missed": 0,
+      "covered": 62,
+      "total": 62,
+      "ratio": 1.0
+    },
+    "LINE": {
+      "missed": 2,
+      "covered": 322,
+      "total": 324,
+      "ratio": 0.9938271604938271
+    },
+    "COMPLEXITY": {
+      "missed": 1,
+      "covered": 137,
+      "total": 138,
+      "ratio": 0.9927536231884058
+    },
+    "METHOD": {
+      "missed": 1,
+      "covered": 106,
+      "total": 107,
+      "ratio": 0.9906542056074766
+    },
+    "CLASS": {
+      "missed": 0,
+      "covered": 40,
+      "total": 40,
+      "ratio": 1.0
+    }
+  },
+  "test_classes": 15,
+  "mutation": {
+    "total": 80,
+    "statuses": {
+      "KILLED": 80
+    },
+    "assertion_kill_ratio": 1.0
+  }
+}
