@@ -1,0 +1,23 @@
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="de.campusshop.dispatch.service.ShipmentConcurrencyTest" time="0.608" tests="1" errors="0" skipped="0" failures="1">
+  <testcase name="simultaneousDuplicateRequestsCreateExactlyOneShipment" classname="de.campusshop.dispatch.service.ShipmentConcurrencyTest" time="0.565">
+    <failure message="&#10;Expecting actual:&#10;  [&quot;CREATED&quot;, &quot;CREATED&quot;]&#10;to contain exactly in any order:&#10;  [&quot;CREATED&quot;, &quot;DUPLICATE&quot;]&#10;elements not found:&#10;  [&quot;DUPLICATE&quot;]&#10;and elements not expected:&#10;  [&quot;CREATED&quot;]&#10;" type="java.lang.AssertionError">java.lang.AssertionError: 
+
+Expecting actual:
+  ["CREATED", "CREATED"]
+to contain exactly in any order:
+  ["CREATED", "DUPLICATE"]
+elements not found:
+  ["DUPLICATE"]
+and elements not expected:
+  ["CREATED"]
+
+	at de.campusshop.dispatch.service.ShipmentConcurrencyTest.simultaneousDuplicateRequestsCreateExactlyOneShipment(ShipmentConcurrencyTest.java:37)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+</failure>
+    <system-out>11:09:43.212 [pool-2-thread-2] INFO de.campusshop.dispatch.service.ShipmentRegistrationService -- Registered shipment e68fc1d1-ea83-435b-8d90-0400e86f39c7 manifest 4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8 with 2 parcels and total 16.99
+11:09:43.212 [pool-2-thread-1] INFO de.campusshop.dispatch.service.ShipmentRegistrationService -- Registered shipment ccb0d15e-f601-4ec9-9b7e-89035d93c316 manifest 4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8 with 2 parcels and total 16.99
+</system-out>
+  </testcase>
+</testsuite>

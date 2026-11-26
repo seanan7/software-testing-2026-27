@@ -1,0 +1,87 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------< de.campusshop:dispatch-manifest-hub >-----------------
+[INFO] Building dispatch-manifest-hub cw2
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.14:prepare-agent (default) @ dispatch-manifest-hub ---
+[INFO] jacocoArgLine set to -javaagent:<home>/.m2/repository/org/jacoco/org.jacoco.agent/0.8.14/org.jacoco.agent-0.8.14-runtime.jar=destfile=<project>/target/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ dispatch-manifest-hub ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 0 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ dispatch-manifest-hub ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ dispatch-manifest-hub ---
+[INFO] skip non existing resourceDirectory <project>/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ dispatch-manifest-hub ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 15 source files with javac [debug parameters release 21] to target/test-classes
+[INFO] <project>/src/test/java/de/campusshop/dispatch/repository/DynamoShipmentRepositoryTest.java: <project>/src/test/java/de/campusshop/dispatch/repository/DynamoShipmentRepositoryTest.java uses unchecked or unsafe operations.
+[INFO] <project>/src/test/java/de/campusshop/dispatch/repository/DynamoShipmentRepositoryTest.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- surefire:3.5.2:test (default-test) @ dispatch-manifest-hub ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running de.campusshop.dispatch.service.ShipmentConcurrencyTest
+11:09:43.212 [pool-2-thread-2] INFO de.campusshop.dispatch.service.ShipmentRegistrationService -- Registered shipment e68fc1d1-ea83-435b-8d90-0400e86f39c7 manifest 4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8 with 2 parcels and total 16.99
+11:09:43.212 [pool-2-thread-1] INFO de.campusshop.dispatch.service.ShipmentRegistrationService -- Registered shipment ccb0d15e-f601-4ec9-9b7e-89035d93c316 manifest 4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8 with 2 parcels and total 16.99
+[ERROR] Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.608 s <<< FAILURE! -- in de.campusshop.dispatch.service.ShipmentConcurrencyTest
+[ERROR] de.campusshop.dispatch.service.ShipmentConcurrencyTest.simultaneousDuplicateRequestsCreateExactlyOneShipment -- Time elapsed: 0.565 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting actual:
+  ["CREATED", "CREATED"]
+to contain exactly in any order:
+  ["CREATED", "DUPLICATE"]
+elements not found:
+  ["DUPLICATE"]
+and elements not expected:
+  ["CREATED"]
+
+	at de.campusshop.dispatch.service.ShipmentConcurrencyTest.simultaneousDuplicateRequestsCreateExactlyOneShipment(ShipmentConcurrencyTest.java:37)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   ShipmentConcurrencyTest.simultaneousDuplicateRequestsCreateExactlyOneShipment:37 
+Expecting actual:
+  ["CREATED", "CREATED"]
+to contain exactly in any order:
+  ["CREATED", "DUPLICATE"]
+elements not found:
+  ["DUPLICATE"]
+and elements not expected:
+  ["CREATED"]
+
+[INFO] 
+[ERROR] Tests run: 1, Failures: 1, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  9.189 s
+[INFO] Finished at: 2026-11-26T11:09:45+08:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.2:test (default-test) on project dispatch-manifest-hub: There are test failures.
+[ERROR] 
+[ERROR] See <project>/target/surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
