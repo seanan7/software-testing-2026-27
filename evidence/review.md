@@ -51,6 +51,32 @@ instrumentation, not a production pagination change.
 
 ## Remaining review limitations
 
+The extension now turns several of the following risks into executed counterexamples;
+it does not implement a new storage contract or claim that those risks have been repaired.
+`extension-study.md` links the instrumented calls, raw outcomes and minimum witnesses.
+
+### D6: ambiguous persistence and observation aliasing — characterized
+
+`FailureCutExperimentTest` crosses 16 before/after-change fault scenarios with 12 payload
+facets. In `archive-after`, the archive remains after an error and is invisible through an
+index-based API read. In `index-after`, the index is committed but error compensation removes
+the archive. Partial deletion produces the same dangling-index shape. Six scenarios produce
+72 torn executions; these are mechanism-linked findings, not 72 new independent bugs.
+The synthesized `{summary, archive-inventory}` basis resolves all four persistence states
+within this model; API-only observations leave the orphan/empty distinction unresolved.
+Raw evidence: `results/extension-final/failure-cuts.json` and `assurance-summary.json`.
+
+### D7: one-instance lock does not transfer to shared instances or stale indexes — characterized
+
+All six two-client check/put orders are executed against two real service instances sharing
+an instrumented repository. Four create duplicate shipments. Four further delayed-index
+histories fail even with sequential calls on one instance. Eight histories have two-operation
+uniqueness counterexamples; six serial/zero-lag histories satisfy the sequential model.
+Calibration and separate Python replay agree. This is not AWS or multiprocess execution.
+Raw evidence: `results/extension-final/concurrent-histories.json`.
+
+### Unresolved product risks
+
 - Deletion removes evidence before removing the index. If the second operation fails, a
   dangling index can remain. The API returns 500; all-or-nothing deletion is not established.
 - An ambiguous storage timeout may have committed remotely. Local mocks cannot prove that

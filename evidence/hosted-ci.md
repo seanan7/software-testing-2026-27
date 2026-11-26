@@ -31,6 +31,22 @@ are not measurements of the hosted runner or a deployed cloud service.
 
 This successful push run establishes the observed hosted execution and report upload.
 It does not establish every pull-request trigger, negative hosted workflow scenario,
-cold-cache condition or artifact accessibility after retention expires. The self-evaluation
-therefore keeps item 5.4 at 3/5 and the total at 79/100. The original r001 documents are
-preserved as historical versions; their pending-hosted-run statements describe that revision.
+cold-cache condition or artifact accessibility after retention expires. The original r001
+documents are preserved as historical versions; their pending-hosted-run statements describe
+that revision. The later extension is evaluated separately below.
+
+## Extended method and evidence gates
+
+The [extension run 45857614507](https://github.com/seanan7/software-testing-2026-27/actions/runs/45857614507)
+tested commit `bf3dfb826ff435b0d5898bad896f1836c2bba3be` and completed successfully.
+The full functional/coverage/mutation step, seven quality-gate probes, ten experiment-evidence
+gate probes and artifact upload all succeeded. `test-evidence` artifact `15137115568` was
+609,849 bytes and unexpired when checked. Its compact public API metadata is retained under
+`results/hosted/run-45857614507.json`.
+
+The extension's local snapshot has 319 passing JUnit cases, unchanged 99.38% line/100% branch
+coverage and 80/80 assertion-killed PIT mutants. `extension-study.md` explains the separate
+diagnostic findings: 72 torn outcomes in the finite 192-execution fault matrix and eight
+nonlinearizable histories. Passing experiment checks must not be read as a claim that those
+stronger safety objectives hold. The hosted component-gate probes deliberately corrupt or
+remove evidence; they do not simulate a negative push or pull-request event end to end.

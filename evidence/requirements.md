@@ -31,3 +31,14 @@ The mix is intentional: boundary tests challenge inputs, model/property tests ex
 states, HTTP tests observe real parsing/timeouts, request capture observes storage semantics,
 and mutation analysis challenges whether assertions notice implementation changes. High
 coverage alone would not justify any of these behaviours.
+
+## Extension study objectives and links
+
+The following objectives extend the testing study; they do not rewrite the CW2 contract.
+`extension-plan.md` was committed before the new runs; `extension-study.md` interprets them.
+
+| Objective / existing requirements | New evidence | Outcome and limit |
+|---|---|---|
+| Q5: distinguish coherent from torn archive/index outcomes; R4/R10/R14 | `assurance/FailureCutExperimentTest.java`; `results/extension-final/failure-cuts.json` | Sixteen fault scenarios x12 payload facets; 72 torn-state counterexamples. Stronger recovery objective is not met. |
+| Q6: test cross-instance uniqueness and delayed index assumptions; R9 | `assurance/ConcurrentHistoryTest.java`; `results/extension-final/concurrent-histories.json` | Four two-instance and four delayed-index counterexamples; no AWS execution or distributed guarantee. |
+| Q7: validate the instruments and obtain a minimum separating probe basis; Q3/Q4 | `ci/analyse_assurance.py`; `ci/probe_assurance.py`; `results/extension-final/assurance-summary.json` | Four-state calibration, 24 history controls, independent replay and exact subset enumeration. Minimality applies only to the declared probes/state model. |

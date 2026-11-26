@@ -1,0 +1,6 @@
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="de.campusshop.dispatch.service.ShipmentConcurrencyTest" time="0.217" tests="1" errors="0" skipped="0" failures="0">
+  <testcase name="simultaneousDuplicateRequestsCreateExactlyOneShipment" classname="de.campusshop.dispatch.service.ShipmentConcurrencyTest" time="0.217">
+    <system-out>2026-11-27T00:17:30.705+08:00  INFO 739 --- [dispatch-manifest-hub] [ool-20-thread-1] d.c.d.s.ShipmentRegistrationService      : Registered shipment 18ea3818-e3c6-4e4c-a1fe-08d1c86f1d3c manifest 4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8 with 2 parcels and total 16.99
+</system-out>
+  </testcase>
+</testsuite>

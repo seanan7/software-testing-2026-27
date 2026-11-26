@@ -1,0 +1,6 @@
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="de.campusshop.dispatch.service.ChargePropertiesTest" time="0.014" tests="4" errors="0" skipped="0" failures="0">
+  <testcase name="chargeIsMonotoneInWeightForNonnegativeTariffs" classname="de.campusshop.dispatch.service.ChargePropertiesTest" time="0.006" />
+  <testcase name="thousandChargesMatchAnIndependentIntegerRationalOracle" classname="de.campusshop.dispatch.service.ChargePropertiesTest" time="0.003" />
+  <testcase name="surchargeCannotReduceANonnegativeCharge" classname="de.campusshop.dispatch.service.ChargePropertiesTest" time="0.0" />
+  <testcase name="chargeIsInvariantToTrailingZeroRepresentation" classname="de.campusshop.dispatch.service.ChargePropertiesTest" time="0.002" />
+</testsuite>

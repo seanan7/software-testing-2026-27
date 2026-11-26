@@ -1,0 +1,472 @@
+{
+  "checker_bound" : "complete register histories of at most eight operations",
+  "schedules" : [ {
+    "name" : "two-instances/C0-P0-C1-P1",
+    "operations" : [ {
+      "actor" : 0,
+      "invocation" : 1,
+      "response" : 4,
+      "manifest" : "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+      "outcome" : "CREATED"
+    }, {
+      "actor" : 1,
+      "invocation" : 2,
+      "response" : 3,
+      "manifest" : "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+      "outcome" : "DUPLICATE"
+    } ],
+    "linearizable" : true,
+    "witness" : [ 0, 1 ],
+    "persisted_shipments" : 1,
+    "events" : [ "C0=false", "P0=COMMITTED", "C1=true", "P1=SKIPPED_DUPLICATE" ],
+    "finding" : "MODEL_ACCEPTS"
+  }, {
+    "name" : "two-instances/C0-C1-P0-P1",
+    "operations" : [ {
+      "actor" : 0,
+      "invocation" : 1,
+      "response" : 3,
+      "manifest" : "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+      "outcome" : "CREATED"
+    }, {
+      "actor" : 1,
+      "invocation" : 2,
+      "response" : 4,
+      "manifest" : "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+      "outcome" : "CREATED"
+    } ],
+    "linearizable" : false,
+    "witness" : [ ],
+    "persisted_shipments" : 2,
+    "events" : [ "C0=false", "C1=false", "P0=COMMITTED", "P1=COMMITTED" ],
+    "finding" : "UNIQUENESS_COUNTEREXAMPLE"
+  }, {
+    "name" : "two-instances/C0-C1-P1-P0",
+    "operations" : [ {
+      "actor" : 0,
+      "invocation" : 2,
+      "response" : 4,
+      "manifest" : "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+      "outcome" : "CREATED"
+    }, {
+      "actor" : 1,
+      "invocation" : 1,
+      "response" : 3,
+      "manifest" : "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+      "outcome" : "CREATED"
+    } ],
+    "linearizable" : false,
+    "witness" : [ ],
+    "persisted_shipments" : 2,
+    "events" : [ "C0=false", "C1=false", "P1=COMMITTED", "P0=COMMITTED" ],
+    "finding" : "UNIQUENESS_COUNTEREXAMPLE"
+  }, {
+    "name" : "two-instances/C1-P1-C0-P0",
+    "operations" : [ {
+      "actor" : 0,
+      "invocation" : 1,
+      "response" : 4,
+      "manifest" : "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+      "outcome" : "DUPLICATE"
+    }, {
+      "actor" : 1,
+      "invocation" : 2,
+      "response" : 3,
+      "manifest" : "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+      "outcome" : "CREATED"
+    } ],
+    "linearizable" : true,
+    "witness" : [ 1, 0 ],
+    "persisted_shipments" : 1,
+    "events" : [ "C1=false", "P1=COMMITTED", "C0=true", "P0=SKIPPED_DUPLICATE" ],
+    "finding" : "MODEL_ACCEPTS"
+  }, {
+    "name" : "two-instances/C1-C0-P1-P0",
+    "operations" : [ {
+      "actor" : 0,
+      "invocation" : 1,
+      "response" : 4,
+      "manifest" : "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+      "outcome" : "CREATED"
+    }, {
+      "actor" : 1,
+      "invocation" : 2,
+      "response" : 3,
+      "manifest" : "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+      "outcome" : "CREATED"
+    } ],
+    "linearizable" : false,
+    "witness" : [ ],
+    "persisted_shipments" : 2,
+    "events" : [ "C1=false", "C0=false", "P1=COMMITTED", "P0=COMMITTED" ],
+    "finding" : "UNIQUENESS_COUNTEREXAMPLE"
+  }, {
+    "name" : "two-instances/C1-C0-P0-P1",
+    "operations" : [ {
+      "actor" : 0,
+      "invocation" : 1,
+      "response" : 3,
+      "manifest" : "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+      "outcome" : "CREATED"
+    }, {
+      "actor" : 1,
+      "invocation" : 2,
+      "response" : 4,
+      "manifest" : "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+      "outcome" : "CREATED"
+    } ],
+    "linearizable" : false,
+    "witness" : [ ],
+    "persisted_shipments" : 2,
+    "events" : [ "C1=false", "C0=false", "P0=COMMITTED", "P1=COMMITTED" ],
+    "finding" : "UNIQUENESS_COUNTEREXAMPLE"
+  }, {
+    "name" : "one-instance-serial-0",
+    "operations" : [ {
+      "actor" : 0,
+      "invocation" : 1,
+      "response" : 2,
+      "manifest" : "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+      "outcome" : "CREATED"
+    }, {
+      "actor" : 1,
+      "invocation" : 3,
+      "response" : 4,
+      "manifest" : "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+      "outcome" : "DUPLICATE"
+    } ],
+    "linearizable" : true,
+    "witness" : [ 0, 1 ],
+    "persisted_shipments" : 1,
+    "events" : [ ],
+    "finding" : "MODEL_ACCEPTS"
+  }, {
+    "name" : "one-instance-serial-1",
+    "operations" : [ {
+      "actor" : 1,
+      "invocation" : 1,
+      "response" : 2,
+      "manifest" : "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+      "outcome" : "CREATED"
+    }, {
+      "actor" : 0,
+      "invocation" : 3,
+      "response" : 4,
+      "manifest" : "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+      "outcome" : "DUPLICATE"
+    } ],
+    "linearizable" : true,
+    "witness" : [ 0, 1 ],
+    "persisted_shipments" : 1,
+    "events" : [ ],
+    "finding" : "MODEL_ACCEPTS"
+  }, {
+    "name" : "one-instance-lag-0-calls-2",
+    "operations" : [ {
+      "actor" : 0,
+      "invocation" : 1,
+      "response" : 2,
+      "manifest" : "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+      "outcome" : "CREATED"
+    }, {
+      "actor" : 1,
+      "invocation" : 3,
+      "response" : 4,
+      "manifest" : "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+      "outcome" : "DUPLICATE"
+    } ],
+    "linearizable" : true,
+    "witness" : [ 0, 1 ],
+    "persisted_shipments" : 1,
+    "events" : [ ],
+    "finding" : "MODEL_ACCEPTS"
+  }, {
+    "name" : "one-instance-lag-0-calls-3",
+    "operations" : [ {
+      "actor" : 0,
+      "invocation" : 1,
+      "response" : 2,
+      "manifest" : "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+      "outcome" : "CREATED"
+    }, {
+      "actor" : 1,
+      "invocation" : 3,
+      "response" : 4,
+      "manifest" : "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+      "outcome" : "DUPLICATE"
+    }, {
+      "actor" : 0,
+      "invocation" : 5,
+      "response" : 6,
+      "manifest" : "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+      "outcome" : "DUPLICATE"
+    } ],
+    "linearizable" : true,
+    "witness" : [ 0, 1, 2 ],
+    "persisted_shipments" : 1,
+    "events" : [ ],
+    "finding" : "MODEL_ACCEPTS"
+  }, {
+    "name" : "one-instance-lag-1-calls-2",
+    "operations" : [ {
+      "actor" : 0,
+      "invocation" : 1,
+      "response" : 2,
+      "manifest" : "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+      "outcome" : "CREATED"
+    }, {
+      "actor" : 1,
+      "invocation" : 3,
+      "response" : 4,
+      "manifest" : "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+      "outcome" : "CREATED"
+    } ],
+    "linearizable" : false,
+    "witness" : [ ],
+    "persisted_shipments" : 2,
+    "events" : [ ],
+    "finding" : "UNIQUENESS_COUNTEREXAMPLE"
+  }, {
+    "name" : "one-instance-lag-1-calls-3",
+    "operations" : [ {
+      "actor" : 0,
+      "invocation" : 1,
+      "response" : 2,
+      "manifest" : "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+      "outcome" : "CREATED"
+    }, {
+      "actor" : 1,
+      "invocation" : 3,
+      "response" : 4,
+      "manifest" : "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+      "outcome" : "CREATED"
+    }, {
+      "actor" : 0,
+      "invocation" : 5,
+      "response" : 6,
+      "manifest" : "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+      "outcome" : "CREATED"
+    } ],
+    "linearizable" : false,
+    "witness" : [ ],
+    "persisted_shipments" : 3,
+    "events" : [ ],
+    "finding" : "UNIQUENESS_COUNTEREXAMPLE"
+  }, {
+    "name" : "one-instance-lag-2-calls-2",
+    "operations" : [ {
+      "actor" : 0,
+      "invocation" : 1,
+      "response" : 2,
+      "manifest" : "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+      "outcome" : "CREATED"
+    }, {
+      "actor" : 1,
+      "invocation" : 3,
+      "response" : 4,
+      "manifest" : "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+      "outcome" : "CREATED"
+    } ],
+    "linearizable" : false,
+    "witness" : [ ],
+    "persisted_shipments" : 2,
+    "events" : [ ],
+    "finding" : "UNIQUENESS_COUNTEREXAMPLE"
+  }, {
+    "name" : "one-instance-lag-2-calls-3",
+    "operations" : [ {
+      "actor" : 0,
+      "invocation" : 1,
+      "response" : 2,
+      "manifest" : "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+      "outcome" : "CREATED"
+    }, {
+      "actor" : 1,
+      "invocation" : 3,
+      "response" : 4,
+      "manifest" : "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+      "outcome" : "CREATED"
+    }, {
+      "actor" : 0,
+      "invocation" : 5,
+      "response" : 6,
+      "manifest" : "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+      "outcome" : "CREATED"
+    } ],
+    "linearizable" : false,
+    "witness" : [ ],
+    "persisted_shipments" : 3,
+    "events" : [ ],
+    "finding" : "UNIQUENESS_COUNTEREXAMPLE"
+  } ],
+  "scope" : "two service instances sharing deterministic in-memory persistence; not AWS",
+  "calibration" : [ {
+    "first" : "CREATED",
+    "second" : "CREATED",
+    "interval" : "FIRST_BEFORE_SECOND",
+    "observed" : true,
+    "same_key" : false,
+    "expected" : true
+  }, {
+    "first" : "CREATED",
+    "second" : "DUPLICATE",
+    "interval" : "FIRST_BEFORE_SECOND",
+    "observed" : false,
+    "same_key" : false,
+    "expected" : false
+  }, {
+    "first" : "DUPLICATE",
+    "second" : "CREATED",
+    "interval" : "FIRST_BEFORE_SECOND",
+    "observed" : false,
+    "same_key" : false,
+    "expected" : false
+  }, {
+    "first" : "DUPLICATE",
+    "second" : "DUPLICATE",
+    "interval" : "FIRST_BEFORE_SECOND",
+    "observed" : false,
+    "same_key" : false,
+    "expected" : false
+  }, {
+    "first" : "CREATED",
+    "second" : "CREATED",
+    "interval" : "SECOND_BEFORE_FIRST",
+    "observed" : true,
+    "same_key" : false,
+    "expected" : true
+  }, {
+    "first" : "CREATED",
+    "second" : "DUPLICATE",
+    "interval" : "SECOND_BEFORE_FIRST",
+    "observed" : false,
+    "same_key" : false,
+    "expected" : false
+  }, {
+    "first" : "DUPLICATE",
+    "second" : "CREATED",
+    "interval" : "SECOND_BEFORE_FIRST",
+    "observed" : false,
+    "same_key" : false,
+    "expected" : false
+  }, {
+    "first" : "DUPLICATE",
+    "second" : "DUPLICATE",
+    "interval" : "SECOND_BEFORE_FIRST",
+    "observed" : false,
+    "same_key" : false,
+    "expected" : false
+  }, {
+    "first" : "CREATED",
+    "second" : "CREATED",
+    "interval" : "OVERLAP",
+    "observed" : true,
+    "same_key" : false,
+    "expected" : true
+  }, {
+    "first" : "CREATED",
+    "second" : "DUPLICATE",
+    "interval" : "OVERLAP",
+    "observed" : false,
+    "same_key" : false,
+    "expected" : false
+  }, {
+    "first" : "DUPLICATE",
+    "second" : "CREATED",
+    "interval" : "OVERLAP",
+    "observed" : false,
+    "same_key" : false,
+    "expected" : false
+  }, {
+    "first" : "DUPLICATE",
+    "second" : "DUPLICATE",
+    "interval" : "OVERLAP",
+    "observed" : false,
+    "same_key" : false,
+    "expected" : false
+  }, {
+    "first" : "CREATED",
+    "second" : "CREATED",
+    "interval" : "FIRST_BEFORE_SECOND",
+    "observed" : false,
+    "same_key" : true,
+    "expected" : false
+  }, {
+    "first" : "CREATED",
+    "second" : "DUPLICATE",
+    "interval" : "FIRST_BEFORE_SECOND",
+    "observed" : true,
+    "same_key" : true,
+    "expected" : true
+  }, {
+    "first" : "DUPLICATE",
+    "second" : "CREATED",
+    "interval" : "FIRST_BEFORE_SECOND",
+    "observed" : false,
+    "same_key" : true,
+    "expected" : false
+  }, {
+    "first" : "DUPLICATE",
+    "second" : "DUPLICATE",
+    "interval" : "FIRST_BEFORE_SECOND",
+    "observed" : false,
+    "same_key" : true,
+    "expected" : false
+  }, {
+    "first" : "CREATED",
+    "second" : "CREATED",
+    "interval" : "SECOND_BEFORE_FIRST",
+    "observed" : false,
+    "same_key" : true,
+    "expected" : false
+  }, {
+    "first" : "CREATED",
+    "second" : "DUPLICATE",
+    "interval" : "SECOND_BEFORE_FIRST",
+    "observed" : false,
+    "same_key" : true,
+    "expected" : false
+  }, {
+    "first" : "DUPLICATE",
+    "second" : "CREATED",
+    "interval" : "SECOND_BEFORE_FIRST",
+    "observed" : true,
+    "same_key" : true,
+    "expected" : true
+  }, {
+    "first" : "DUPLICATE",
+    "second" : "DUPLICATE",
+    "interval" : "SECOND_BEFORE_FIRST",
+    "observed" : false,
+    "same_key" : true,
+    "expected" : false
+  }, {
+    "first" : "CREATED",
+    "second" : "CREATED",
+    "interval" : "OVERLAP",
+    "observed" : false,
+    "same_key" : true,
+    "expected" : false
+  }, {
+    "first" : "CREATED",
+    "second" : "DUPLICATE",
+    "interval" : "OVERLAP",
+    "observed" : true,
+    "same_key" : true,
+    "expected" : true
+  }, {
+    "first" : "DUPLICATE",
+    "second" : "CREATED",
+    "interval" : "OVERLAP",
+    "observed" : true,
+    "same_key" : true,
+    "expected" : true
+  }, {
+    "first" : "DUPLICATE",
+    "second" : "DUPLICATE",
+    "interval" : "OVERLAP",
+    "observed" : false,
+    "same_key" : true,
+    "expected" : false
+  } ]
+}

@@ -1,0 +1,18 @@
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="de.campusshop.dispatch.assurance.ConcurrentHistoryTest" time="1.301" tests="16" errors="0" skipped="0" failures="0">
+  <testcase name="enumerateSchedulesControlsAndLagModels()[1]" classname="de.campusshop.dispatch.assurance.ConcurrentHistoryTest" time="0.311" />
+  <testcase name="enumerateSchedulesControlsAndLagModels()[2]" classname="de.campusshop.dispatch.assurance.ConcurrentHistoryTest" time="0.002" />
+  <testcase name="enumerateSchedulesControlsAndLagModels()[3]" classname="de.campusshop.dispatch.assurance.ConcurrentHistoryTest" time="0.001" />
+  <testcase name="enumerateSchedulesControlsAndLagModels()[4]" classname="de.campusshop.dispatch.assurance.ConcurrentHistoryTest" time="0.001" />
+  <testcase name="enumerateSchedulesControlsAndLagModels()[5]" classname="de.campusshop.dispatch.assurance.ConcurrentHistoryTest" time="0.001" />
+  <testcase name="enumerateSchedulesControlsAndLagModels()[6]" classname="de.campusshop.dispatch.assurance.ConcurrentHistoryTest" time="0.001" />
+  <testcase name="enumerateSchedulesControlsAndLagModels()[7]" classname="de.campusshop.dispatch.assurance.ConcurrentHistoryTest" time="0.0" />
+  <testcase name="enumerateSchedulesControlsAndLagModels()[8]" classname="de.campusshop.dispatch.assurance.ConcurrentHistoryTest" time="0.001" />
+  <testcase name="enumerateSchedulesControlsAndLagModels()[9]" classname="de.campusshop.dispatch.assurance.ConcurrentHistoryTest" time="0.001" />
+  <testcase name="enumerateSchedulesControlsAndLagModels()[10]" classname="de.campusshop.dispatch.assurance.ConcurrentHistoryTest" time="0.001" />
+  <testcase name="enumerateSchedulesControlsAndLagModels()[11]" classname="de.campusshop.dispatch.assurance.ConcurrentHistoryTest" time="0.001" />
+  <testcase name="enumerateSchedulesControlsAndLagModels()[12]" classname="de.campusshop.dispatch.assurance.ConcurrentHistoryTest" time="0.001" />
+  <testcase name="enumerateSchedulesControlsAndLagModels()[13]" classname="de.campusshop.dispatch.assurance.ConcurrentHistoryTest" time="0.001" />
+  <testcase name="enumerateSchedulesControlsAndLagModels()[14]" classname="de.campusshop.dispatch.assurance.ConcurrentHistoryTest" time="0.002" />
+  <testcase name="exhaustiveTwoCallTruthTableCalibratesTheCheckerIndependently" classname="de.campusshop.dispatch.assurance.ConcurrentHistoryTest" time="0.003" />
+  <testcase name="checkerRejectsMalformedIntervalsAndUnsupportedOutcomes" classname="de.campusshop.dispatch.assurance.ConcurrentHistoryTest" time="0.004" />
+</testsuite>

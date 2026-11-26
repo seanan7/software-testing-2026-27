@@ -7,9 +7,14 @@ Hosted execution is recorded separately in `hosted-ci.md`: the complete GitHub A
 entrypoint and gate probes passed, and their report artifact was retained. No quiz pass,
 independent peer review or operational reliability claim is inferred from these results.
 
-## Results and targets
+## Original local study results and targets
 
-| Measure | Predeclared target | Baseline | Final |
+The following table retains the original enhanced study (`results/final/`). The extension
+adds 210 diagnostic/calibration JUnit cases: 319/319 now pass, with unchanged production
+coverage and 80/80 assertion kills. `extension-study.md` separately reports 192 failure-cut
+executions, 72 torn outcomes and eight counterexample histories; these are not safety passes.
+
+| Measure | Predeclared target | Baseline | Enhanced r001 |
 |---|---|---|---|
 | Functional cases | All pass, none skipped | 84/84 | 109/109; 15 test classes |
 | Production line coverage | >=90% | 301/324 = 92.90% | 322/324 = 99.38% |
@@ -39,9 +44,15 @@ timeout to 80 assertion kills; the five test gaps are not misreported as five re
 
 The enhanced suite covers the plan's functional layers and all 20 requirement/objective rows,
 but scope limits remain. In particular, the new concurrency fix applies to one service instance;
-the real GSI's eventual consistency and multiple application instances remain unproved.
+real cloud safety remains unproved. The extension's two-instance and delayed-index models
+now provide explicit counterexamples to extrapolating that lock to a distributed guarantee.
 
 ## Timing and conditional statistical interpretation
+
+The numbers in this section describe the retained original timing sample. The extension
+full run has a separate 500-sample record under `results/extension-final/`: p95 0.046572ms
+and descriptive bootstrap interval [0.033636, 0.054819]ms. Both are sequential in-memory
+workloads; the difference is not a controlled claim of performance improvement.
 
 The local workload uses simulated tariffs, in-memory stores and an empty store before each
 operation. It measures registration itself; setup, assertions and deletion are outside timing.
@@ -63,10 +74,10 @@ zero failure probability, and is not presented as a production reliability estim
 
 - Already met: the stated coverage, mutation and local timing thresholds. Raising a passing
   threshold after observing results would not create new assurance; targets were fixed first.
-- Hosted CI: one actual push run passed the full entrypoint and gate probes and retained
-  its artifact. Negative push/PR scenarios, cold-cache reproducibility and long-term artifact
-  access have not been systematically exercised. Self-evaluation item 5.4 remains below 4
-  for those narrower reasons; the successful hosted run itself is established.
+- Hosted CI: genuine push runs passed the complete entrypoint and retained their artifacts.
+  The extension adds ten corruption/missing-evidence gate probes to the seven metric probes.
+  Whole-workflow negative push/PR scenarios, cold-cache behavior and long-term artifact
+  access have not been systematically exercised; gate-component probes are labelled separately.
 - Real cloud concurrency/failures: test multiple processes against an eventually consistent
   index; introduce recoverable, idempotent write semantics; inject committed-but-unacknowledged
   requests and verify reconciliation. Do not treat a JVM lock as a distributed guarantee.

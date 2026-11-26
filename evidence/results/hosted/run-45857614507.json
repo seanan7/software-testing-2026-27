@@ -1,0 +1,85 @@
+{
+  "repository": "https://github.com/seanan7/software-testing-2026-27",
+  "owner": "seanan7",
+  "visibility": "public",
+  "commit": "bf3dfb826ff435b0d5898bad896f1836c2bba3be",
+  "runs": [
+    {
+      "id": 45857614507,
+      "html_url": "https://github.com/seanan7/software-testing-2026-27/actions/runs/45857614507",
+      "head_sha": "bf3dfb826ff435b0d5898bad896f1836c2bba3be",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "steps": [
+    {
+      "name": "Set up job",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run actions/checkout@v4",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run actions/setup-java@v4",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run actions/setup-python@v5",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Functional tests, coverage and mutation analysis",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Verify positive and negative quality gates",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Verify positive and negative experiment-evidence gates",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Retain test and quality evidence",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Post Run actions/setup-python@v5",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Post Run actions/setup-java@v4",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Post Run actions/checkout@v4",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Complete job",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 15137115568,
+      "name": "test-evidence",
+      "size_in_bytes": 609849,
+      "expired": false
+    }
+  ]
+}

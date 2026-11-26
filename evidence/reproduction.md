@@ -9,16 +9,16 @@ Clone the public evidence repository:
 ```bash
 git clone https://github.com/seanan7/software-testing-2026-27.git
 cd software-testing-2026-27
-git checkout testing-r002
+git checkout testing-r004
 ```
 
-If using the accompanying r002 archive, unzip it and restore the Git history from its
+If using the accompanying r004 archive, unzip it and restore the Git history from its
 top-level bundle (the `testing-project/` directory is also a readable snapshot):
 
 ```bash
 git clone history.bundle restored-project
 cd restored-project
-git checkout testing-r002
+git checkout testing-r004
 ```
 
 ## Run from repository root
@@ -42,12 +42,24 @@ The entrypoint stops on any Maven or quality-gate failure. Its outputs are Suref
 ./mvnw -Dtest=ChargePropertiesTest test
 ./mvnw -Dtest=ShipmentStateModelTest test
 python3 -B ci/summarise_timings.py
+python3 -B ci/analyse_assurance.py --input-dir evidence/results/extension-final --check
+python3 -B ci/probe_assurance.py
 ```
 
 The active GitHub Actions workflow invokes the same entrypoint and gate probes, with
 Java 21 and retained test/coverage artifacts. `hosted-ci.md` records the successful actual
 push run, commit and artifact. Local and hosted results are labelled separately; the original
 GitLab configuration and `testing-r001` snapshot remain historical evidence.
+
+The full entrypoint now also produces the paired failure-cut and concurrent-history reports,
+checks them independently and summarizes the current run's timings. The optional standalone
+figure is reproduced with `python3 ci/plot_assurance.py` after installing Matplotlib in a
+local virtual environment. It is not required by the test or evidence gate.
+
+`extension-plan.md` fixes the experiment bounds before execution. `extension-study.md`
+explains the minimum probe basis, ablation and counterexamples. The 210 new diagnostic and
+calibration cases are distinct from the earlier 109 functional cases. Passing diagnostic
+cases do not establish that the stronger cross-store or cross-instance safety objectives hold.
 
 ## Audit the red/green history
 

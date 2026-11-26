@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
 """Reproduce the descriptive bootstrap and explicitly conditional zero-failure bound."""
+import argparse
 import json
 import math
 import random
 from pathlib import Path
 
 root = Path(__file__).resolve().parents[1]
-path = root / 'evidence/results/final/performance.json'
+parser = argparse.ArgumentParser()
+parser.add_argument('--input', type=Path, default=root / 'evidence/results/final/performance.json')
+args = parser.parse_args()
+path = args.input
 data = json.loads(path.read_text(encoding='utf-8'))
 samples = data['raw_ms']
 if data['failures'] != 0 or len(samples) != data['samples']:

@@ -1,0 +1,4807 @@
+{
+  "planned_facets" : 12,
+  "scope" : "actual service with deterministic in-memory fault adapters; not AWS",
+  "cases" : [ {
+    "scenario" : "register-control",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 1,
+      "unicode" : false
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "CREATED",
+    "expected_state" : [ true, true ],
+    "fired" : [ ],
+    "declared_faults" : [ ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER" ],
+    "observations" : {
+      "return" : "CREATED",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "lookup-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 1,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=LOOKUP, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=LOOKUP, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "lookup-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 1,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=LOOKUP, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=LOOKUP, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "archive-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 1,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=ARCHIVE_PUT, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_PUT, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "archive-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 1,
+      "unicode" : false
+    },
+    "archive" : true,
+    "index" : false,
+    "coherent" : false,
+    "finding" : "ORPHAN_ARCHIVE",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, false ],
+    "fired" : [ "Fault[point=ARCHIVE_PUT, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_PUT, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 1,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 1,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before-cleanup-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 1,
+      "unicode" : false
+    },
+    "archive" : true,
+    "index" : false,
+    "coherent" : false,
+    "finding" : "ORPHAN_ARCHIVE",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after-cleanup-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 1,
+      "unicode" : false
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before-cleanup-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 1,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after-cleanup-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 1,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-control",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 1,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "DELETED",
+    "expected_state" : [ false, false ],
+    "fired" : [ ],
+    "declared_faults" : [ ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE", "INDEX_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "DELETED",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-archive-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 1,
+      "unicode" : false
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, true ],
+    "fired" : [ "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-archive-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 1,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-index-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 1,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-index-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 1,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE", "INDEX_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "register-control",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 1,
+      "unicode" : false
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "CREATED",
+    "expected_state" : [ true, true ],
+    "fired" : [ ],
+    "declared_faults" : [ ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER" ],
+    "observations" : {
+      "return" : "CREATED",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "lookup-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 1,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=LOOKUP, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=LOOKUP, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "lookup-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 1,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=LOOKUP, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=LOOKUP, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "archive-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 1,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=ARCHIVE_PUT, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_PUT, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "archive-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 1,
+      "unicode" : false
+    },
+    "archive" : true,
+    "index" : false,
+    "coherent" : false,
+    "finding" : "ORPHAN_ARCHIVE",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, false ],
+    "fired" : [ "Fault[point=ARCHIVE_PUT, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_PUT, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 1,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 1,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before-cleanup-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 1,
+      "unicode" : false
+    },
+    "archive" : true,
+    "index" : false,
+    "coherent" : false,
+    "finding" : "ORPHAN_ARCHIVE",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after-cleanup-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 1,
+      "unicode" : false
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before-cleanup-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 1,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after-cleanup-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 1,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-control",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 1,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "DELETED",
+    "expected_state" : [ false, false ],
+    "fired" : [ ],
+    "declared_faults" : [ ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE", "INDEX_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "DELETED",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-archive-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 1,
+      "unicode" : false
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, true ],
+    "fired" : [ "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-archive-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 1,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-index-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 1,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-index-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 1,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE", "INDEX_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "register-control",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 1,
+      "unicode" : true
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "CREATED",
+    "expected_state" : [ true, true ],
+    "fired" : [ ],
+    "declared_faults" : [ ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER" ],
+    "observations" : {
+      "return" : "CREATED",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "lookup-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 1,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=LOOKUP, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=LOOKUP, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "lookup-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 1,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=LOOKUP, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=LOOKUP, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "archive-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 1,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=ARCHIVE_PUT, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_PUT, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "archive-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 1,
+      "unicode" : true
+    },
+    "archive" : true,
+    "index" : false,
+    "coherent" : false,
+    "finding" : "ORPHAN_ARCHIVE",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, false ],
+    "fired" : [ "Fault[point=ARCHIVE_PUT, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_PUT, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 1,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 1,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before-cleanup-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 1,
+      "unicode" : true
+    },
+    "archive" : true,
+    "index" : false,
+    "coherent" : false,
+    "finding" : "ORPHAN_ARCHIVE",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after-cleanup-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 1,
+      "unicode" : true
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before-cleanup-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 1,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after-cleanup-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 1,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-control",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 1,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "DELETED",
+    "expected_state" : [ false, false ],
+    "fired" : [ ],
+    "declared_faults" : [ ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE", "INDEX_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "DELETED",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-archive-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 1,
+      "unicode" : true
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, true ],
+    "fired" : [ "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-archive-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 1,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-index-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 1,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-index-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 1,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE", "INDEX_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "register-control",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 1,
+      "unicode" : true
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "CREATED",
+    "expected_state" : [ true, true ],
+    "fired" : [ ],
+    "declared_faults" : [ ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER" ],
+    "observations" : {
+      "return" : "CREATED",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "lookup-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 1,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=LOOKUP, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=LOOKUP, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "lookup-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 1,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=LOOKUP, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=LOOKUP, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "archive-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 1,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=ARCHIVE_PUT, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_PUT, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "archive-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 1,
+      "unicode" : true
+    },
+    "archive" : true,
+    "index" : false,
+    "coherent" : false,
+    "finding" : "ORPHAN_ARCHIVE",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, false ],
+    "fired" : [ "Fault[point=ARCHIVE_PUT, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_PUT, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 1,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 1,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before-cleanup-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 1,
+      "unicode" : true
+    },
+    "archive" : true,
+    "index" : false,
+    "coherent" : false,
+    "finding" : "ORPHAN_ARCHIVE",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after-cleanup-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 1,
+      "unicode" : true
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before-cleanup-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 1,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after-cleanup-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 1,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-control",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 1,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "DELETED",
+    "expected_state" : [ false, false ],
+    "fired" : [ ],
+    "declared_faults" : [ ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE", "INDEX_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "DELETED",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-archive-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 1,
+      "unicode" : true
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, true ],
+    "fired" : [ "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-archive-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 1,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-index-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 1,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-index-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 1,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE", "INDEX_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "register-control",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 2,
+      "unicode" : false
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "CREATED",
+    "expected_state" : [ true, true ],
+    "fired" : [ ],
+    "declared_faults" : [ ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER" ],
+    "observations" : {
+      "return" : "CREATED",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "lookup-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 2,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=LOOKUP, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=LOOKUP, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "lookup-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 2,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=LOOKUP, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=LOOKUP, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "archive-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 2,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=ARCHIVE_PUT, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_PUT, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "archive-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 2,
+      "unicode" : false
+    },
+    "archive" : true,
+    "index" : false,
+    "coherent" : false,
+    "finding" : "ORPHAN_ARCHIVE",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, false ],
+    "fired" : [ "Fault[point=ARCHIVE_PUT, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_PUT, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 2,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 2,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before-cleanup-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 2,
+      "unicode" : false
+    },
+    "archive" : true,
+    "index" : false,
+    "coherent" : false,
+    "finding" : "ORPHAN_ARCHIVE",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after-cleanup-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 2,
+      "unicode" : false
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before-cleanup-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 2,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after-cleanup-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 2,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-control",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 2,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "DELETED",
+    "expected_state" : [ false, false ],
+    "fired" : [ ],
+    "declared_faults" : [ ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE", "INDEX_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "DELETED",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-archive-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 2,
+      "unicode" : false
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, true ],
+    "fired" : [ "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-archive-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 2,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-index-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 2,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-index-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 2,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE", "INDEX_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "register-control",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 2,
+      "unicode" : false
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "CREATED",
+    "expected_state" : [ true, true ],
+    "fired" : [ ],
+    "declared_faults" : [ ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER" ],
+    "observations" : {
+      "return" : "CREATED",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "lookup-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 2,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=LOOKUP, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=LOOKUP, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "lookup-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 2,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=LOOKUP, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=LOOKUP, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "archive-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 2,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=ARCHIVE_PUT, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_PUT, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "archive-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 2,
+      "unicode" : false
+    },
+    "archive" : true,
+    "index" : false,
+    "coherent" : false,
+    "finding" : "ORPHAN_ARCHIVE",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, false ],
+    "fired" : [ "Fault[point=ARCHIVE_PUT, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_PUT, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 2,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 2,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before-cleanup-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 2,
+      "unicode" : false
+    },
+    "archive" : true,
+    "index" : false,
+    "coherent" : false,
+    "finding" : "ORPHAN_ARCHIVE",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after-cleanup-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 2,
+      "unicode" : false
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before-cleanup-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 2,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after-cleanup-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 2,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-control",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 2,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "DELETED",
+    "expected_state" : [ false, false ],
+    "fired" : [ ],
+    "declared_faults" : [ ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE", "INDEX_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "DELETED",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-archive-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 2,
+      "unicode" : false
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, true ],
+    "fired" : [ "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-archive-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 2,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-index-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 2,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-index-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 2,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE", "INDEX_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "register-control",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 2,
+      "unicode" : true
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "CREATED",
+    "expected_state" : [ true, true ],
+    "fired" : [ ],
+    "declared_faults" : [ ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER" ],
+    "observations" : {
+      "return" : "CREATED",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "lookup-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 2,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=LOOKUP, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=LOOKUP, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "lookup-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 2,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=LOOKUP, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=LOOKUP, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "archive-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 2,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=ARCHIVE_PUT, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_PUT, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "archive-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 2,
+      "unicode" : true
+    },
+    "archive" : true,
+    "index" : false,
+    "coherent" : false,
+    "finding" : "ORPHAN_ARCHIVE",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, false ],
+    "fired" : [ "Fault[point=ARCHIVE_PUT, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_PUT, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 2,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 2,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before-cleanup-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 2,
+      "unicode" : true
+    },
+    "archive" : true,
+    "index" : false,
+    "coherent" : false,
+    "finding" : "ORPHAN_ARCHIVE",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after-cleanup-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 2,
+      "unicode" : true
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before-cleanup-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 2,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after-cleanup-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 2,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-control",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 2,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "DELETED",
+    "expected_state" : [ false, false ],
+    "fired" : [ ],
+    "declared_faults" : [ ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE", "INDEX_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "DELETED",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-archive-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 2,
+      "unicode" : true
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, true ],
+    "fired" : [ "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-archive-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 2,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-index-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 2,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-index-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 2,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE", "INDEX_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "register-control",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 2,
+      "unicode" : true
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "CREATED",
+    "expected_state" : [ true, true ],
+    "fired" : [ ],
+    "declared_faults" : [ ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER" ],
+    "observations" : {
+      "return" : "CREATED",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "lookup-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 2,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=LOOKUP, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=LOOKUP, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "lookup-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 2,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=LOOKUP, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=LOOKUP, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "archive-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 2,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=ARCHIVE_PUT, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_PUT, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "archive-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 2,
+      "unicode" : true
+    },
+    "archive" : true,
+    "index" : false,
+    "coherent" : false,
+    "finding" : "ORPHAN_ARCHIVE",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, false ],
+    "fired" : [ "Fault[point=ARCHIVE_PUT, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_PUT, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 2,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 2,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before-cleanup-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 2,
+      "unicode" : true
+    },
+    "archive" : true,
+    "index" : false,
+    "coherent" : false,
+    "finding" : "ORPHAN_ARCHIVE",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after-cleanup-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 2,
+      "unicode" : true
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before-cleanup-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 2,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after-cleanup-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 2,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-control",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 2,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "DELETED",
+    "expected_state" : [ false, false ],
+    "fired" : [ ],
+    "declared_faults" : [ ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE", "INDEX_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "DELETED",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-archive-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 2,
+      "unicode" : true
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, true ],
+    "fired" : [ "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-archive-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 2,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-index-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 2,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-index-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 2,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE", "INDEX_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "register-control",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 5,
+      "unicode" : false
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "CREATED",
+    "expected_state" : [ true, true ],
+    "fired" : [ ],
+    "declared_faults" : [ ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER" ],
+    "observations" : {
+      "return" : "CREATED",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "lookup-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 5,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=LOOKUP, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=LOOKUP, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "lookup-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 5,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=LOOKUP, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=LOOKUP, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "archive-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 5,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=ARCHIVE_PUT, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_PUT, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "archive-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 5,
+      "unicode" : false
+    },
+    "archive" : true,
+    "index" : false,
+    "coherent" : false,
+    "finding" : "ORPHAN_ARCHIVE",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, false ],
+    "fired" : [ "Fault[point=ARCHIVE_PUT, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_PUT, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 5,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 5,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before-cleanup-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 5,
+      "unicode" : false
+    },
+    "archive" : true,
+    "index" : false,
+    "coherent" : false,
+    "finding" : "ORPHAN_ARCHIVE",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after-cleanup-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 5,
+      "unicode" : false
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before-cleanup-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 5,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after-cleanup-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 5,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-control",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 5,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "DELETED",
+    "expected_state" : [ false, false ],
+    "fired" : [ ],
+    "declared_faults" : [ ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE", "INDEX_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "DELETED",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-archive-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 5,
+      "unicode" : false
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, true ],
+    "fired" : [ "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-archive-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 5,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-index-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 5,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-index-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 5,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE", "INDEX_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "register-control",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 5,
+      "unicode" : false
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "CREATED",
+    "expected_state" : [ true, true ],
+    "fired" : [ ],
+    "declared_faults" : [ ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER" ],
+    "observations" : {
+      "return" : "CREATED",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "lookup-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 5,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=LOOKUP, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=LOOKUP, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "lookup-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 5,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=LOOKUP, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=LOOKUP, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "archive-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 5,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=ARCHIVE_PUT, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_PUT, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "archive-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 5,
+      "unicode" : false
+    },
+    "archive" : true,
+    "index" : false,
+    "coherent" : false,
+    "finding" : "ORPHAN_ARCHIVE",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, false ],
+    "fired" : [ "Fault[point=ARCHIVE_PUT, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_PUT, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 5,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 5,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before-cleanup-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 5,
+      "unicode" : false
+    },
+    "archive" : true,
+    "index" : false,
+    "coherent" : false,
+    "finding" : "ORPHAN_ARCHIVE",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after-cleanup-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 5,
+      "unicode" : false
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before-cleanup-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 5,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after-cleanup-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 5,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-control",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 5,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "DELETED",
+    "expected_state" : [ false, false ],
+    "fired" : [ ],
+    "declared_faults" : [ ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE", "INDEX_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "DELETED",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-archive-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 5,
+      "unicode" : false
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, true ],
+    "fired" : [ "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-archive-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 5,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-index-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 5,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-index-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 5,
+      "unicode" : false
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE", "INDEX_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "register-control",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 5,
+      "unicode" : true
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "CREATED",
+    "expected_state" : [ true, true ],
+    "fired" : [ ],
+    "declared_faults" : [ ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER" ],
+    "observations" : {
+      "return" : "CREATED",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "lookup-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 5,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=LOOKUP, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=LOOKUP, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "lookup-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 5,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=LOOKUP, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=LOOKUP, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "archive-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 5,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=ARCHIVE_PUT, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_PUT, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "archive-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 5,
+      "unicode" : true
+    },
+    "archive" : true,
+    "index" : false,
+    "coherent" : false,
+    "finding" : "ORPHAN_ARCHIVE",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, false ],
+    "fired" : [ "Fault[point=ARCHIVE_PUT, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_PUT, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 5,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 5,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before-cleanup-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 5,
+      "unicode" : true
+    },
+    "archive" : true,
+    "index" : false,
+    "coherent" : false,
+    "finding" : "ORPHAN_ARCHIVE",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after-cleanup-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 5,
+      "unicode" : true
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before-cleanup-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 5,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after-cleanup-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 5,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-control",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 5,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "DELETED",
+    "expected_state" : [ false, false ],
+    "fired" : [ ],
+    "declared_faults" : [ ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE", "INDEX_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "DELETED",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-archive-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 5,
+      "unicode" : true
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, true ],
+    "fired" : [ "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-archive-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 5,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-index-before",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 5,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-index-after",
+    "facet" : {
+      "padding" : false,
+      "parcels" : 5,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE", "INDEX_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "register-control",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 5,
+      "unicode" : true
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "CREATED",
+    "expected_state" : [ true, true ],
+    "fired" : [ ],
+    "declared_faults" : [ ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER" ],
+    "observations" : {
+      "return" : "CREATED",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "lookup-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 5,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=LOOKUP, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=LOOKUP, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "lookup-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 5,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=LOOKUP, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=LOOKUP, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "archive-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 5,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=ARCHIVE_PUT, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_PUT, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "archive-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 5,
+      "unicode" : true
+    },
+    "archive" : true,
+    "index" : false,
+    "coherent" : false,
+    "finding" : "ORPHAN_ARCHIVE",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, false ],
+    "fired" : [ "Fault[point=ARCHIVE_PUT, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_PUT, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 5,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 5,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before-cleanup-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 5,
+      "unicode" : true
+    },
+    "archive" : true,
+    "index" : false,
+    "coherent" : false,
+    "finding" : "ORPHAN_ARCHIVE",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after-cleanup-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 5,
+      "unicode" : true
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-before-cleanup-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 5,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=BEFORE]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "index-after-cleanup-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 5,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_PUT, cut=AFTER]", "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 1,
+    "trace" : [ "LOOKUP:BEFORE", "LOOKUP:AFTER", "ARCHIVE_PUT:BEFORE", "ARCHIVE_PUT:AFTER", "INDEX_PUT:BEFORE", "INDEX_PUT:AFTER", "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-control",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 5,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "DELETED",
+    "expected_state" : [ false, false ],
+    "fired" : [ ],
+    "declared_faults" : [ ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE", "INDEX_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "DELETED",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-archive-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 5,
+      "unicode" : true
+    },
+    "archive" : true,
+    "index" : true,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ true, true ],
+    "fired" : [ "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "EXACT_BYTES",
+      "archive-inventory" : "PRESENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-archive-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 5,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=ARCHIVE_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-index-before",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 5,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : true,
+    "coherent" : false,
+    "finding" : "DANGLING_INDEX",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, true ],
+    "fired" : [ "Fault[point=INDEX_REMOVE, cut=BEFORE]" ],
+    "declared_faults" : [ "Fault[point=INDEX_REMOVE, cut=BEFORE]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "FOUND",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "PRESENT"
+    },
+    "raw_bytes_checked" : true
+  }, {
+    "scenario" : "delete-index-after",
+    "facet" : {
+      "padding" : true,
+      "parcels" : 5,
+      "unicode" : true
+    },
+    "archive" : false,
+    "index" : false,
+    "coherent" : true,
+    "finding" : "COHERENT",
+    "outcome" : "ERROR",
+    "expected_state" : [ false, false ],
+    "fired" : [ "Fault[point=INDEX_REMOVE, cut=AFTER]" ],
+    "declared_faults" : [ "Fault[point=INDEX_REMOVE, cut=AFTER]" ],
+    "suppressed_exceptions" : 0,
+    "trace" : [ "ARCHIVE_REMOVE:BEFORE", "ARCHIVE_REMOVE:AFTER", "INDEX_REMOVE:BEFORE", "INDEX_REMOVE:AFTER" ],
+    "observations" : {
+      "return" : "ERROR",
+      "summary" : "ABSENT",
+      "manifest" : "ABSENT",
+      "archive-inventory" : "ABSENT",
+      "index-inventory" : "ABSENT"
+    },
+    "raw_bytes_checked" : true
+  } ],
+  "safety_claim" : "Known torn states are findings; characterization passes are not safety passes",
+  "planned_scenarios" : 16
+}

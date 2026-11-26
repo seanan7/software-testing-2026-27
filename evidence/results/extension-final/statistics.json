@@ -1,0 +1,11 @@
+{
+  "bootstrap_replicates": 2000,
+  "seed": 20261126,
+  "p95_ms": 0.046572,
+  "p95_percentile_bootstrap_95_interval_ms": [
+    0.033636,
+    0.054819
+  ],
+  "iid_conditional_one_sided_failure_probability_upper_95": 0.005973551516349596,
+  "caution": "Resampling assumes exchangeable timings; zero-failure bound assumes IID Bernoulli trials, neither establishes production reliability."
+}
