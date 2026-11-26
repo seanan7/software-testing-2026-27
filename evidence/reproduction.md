@@ -4,13 +4,21 @@ Requirements/rationale: `requirements.md`; initial plan/targets: `plan.md`; insp
 defect decisions: `review.md`; quantitative interpretation/limitations: `analysis.md`.
 The result snapshots in `results/` are retained evidence, not a substitute for executable tests.
 
-If using the accompanying archive rather than a hosted clone, unzip it and restore the Git
-history from its top-level bundle (the `testing-project/` directory is also a readable snapshot):
+Clone the public evidence repository:
+
+```bash
+git clone https://github.com/seanan7/software-testing-2026-27.git
+cd software-testing-2026-27
+git checkout testing-r002
+```
+
+If using the accompanying r002 archive, unzip it and restore the Git history from its
+top-level bundle (the `testing-project/` directory is also a readable snapshot):
 
 ```bash
 git clone history.bundle restored-project
 cd restored-project
-git checkout testing-r001
+git checkout testing-r002
 ```
 
 ## Run from repository root
@@ -36,9 +44,10 @@ The entrypoint stops on any Maven or quality-gate failure. Its outputs are Suref
 python3 -B ci/summarise_timings.py
 ```
 
-The selected GitLab CI job invokes the same entrypoint and declares test/coverage artifacts.
-Local execution and gate probes are recorded separately from hosted-run evidence. A local
-pass does not establish remote triggers, runner permissions, image pull or artifact retention.
+The active GitHub Actions workflow invokes the same entrypoint and gate probes, with
+Java 21 and retained test/coverage artifacts. `hosted-ci.md` records the successful actual
+push run, commit and artifact. Local and hosted results are labelled separately; the original
+GitLab configuration and `testing-r001` snapshot remain historical evidence.
 
 ## Audit the red/green history
 

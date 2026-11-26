@@ -1,0 +1,74 @@
+{
+  "repository": "https://github.com/seanan7/software-testing-2026-27",
+  "owner": "seanan7",
+  "visibility": "public",
+  "ci_conclusion": "success",
+  "ci_run_url": "https://github.com/seanan7/software-testing-2026-27/actions/runs/45847283457",
+  "ci_run_id": 45847283457,
+  "ci_commit": "9c635e62ef1426d2937f18cf79469eabeb7aa515",
+  "ci_steps": [
+    {
+      "name": "Set up job",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run actions/checkout@v4",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run actions/setup-java@v4",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run actions/setup-python@v5",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Functional tests, coverage and mutation analysis",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Verify positive and negative quality gates",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Retain test and quality evidence",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Post Run actions/setup-python@v5",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Post Run actions/setup-java@v4",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Post Run actions/checkout@v4",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Complete job",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "ci_artifacts": [
+    {
+      "id": 15132575130,
+      "name": "test-evidence",
+      "size_in_bytes": 593159,
+      "expired": false
+    }
+  ]
+}

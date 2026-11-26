@@ -3,8 +3,9 @@
 The evidence below comes from actual runs. Baseline and final snapshots retain sanitised
 Surefire XML, JaCoCo XML and raw PIT mutation outcomes. `results/ci-positive.log` is the
 local pipeline transcript; `results/ci-gates.json` contains deliberately failing gate probes.
-No hosted CI execution, quiz pass, independent peer review or operational reliability claim
-is inferred from these files.
+Hosted execution is recorded separately in `hosted-ci.md`: the complete GitHub Actions
+entrypoint and gate probes passed, and their report artifact was retained. No quiz pass,
+independent peer review or operational reliability claim is inferred from these results.
 
 ## Results and targets
 
@@ -62,9 +63,10 @@ zero failure probability, and is not presented as a production reliability estim
 
 - Already met: the stated coverage, mutation and local timing thresholds. Raising a passing
   threshold after observing results would not create new assurance; targets were fixed first.
-- Hosted CI: job configuration and the local entrypoint work, but remote triggers, runner
-  permissions, image/dependency retrieval and artifact retention require an actual hosted run.
-  This is the reason self-evaluation item 5.4 is below 4.
+- Hosted CI: one actual push run passed the full entrypoint and gate probes and retained
+  its artifact. Negative push/PR scenarios, cold-cache reproducibility and long-term artifact
+  access have not been systematically exercised. Self-evaluation item 5.4 remains below 4
+  for those narrower reasons; the successful hosted run itself is established.
 - Real cloud concurrency/failures: test multiple processes against an eventually consistent
   index; introduce recoverable, idempotent write semantics; inject committed-but-unacknowledged
   requests and verify reconciliation. Do not treat a JVM lock as a distributed guarantee.
@@ -84,4 +86,5 @@ and [coverage counters](https://www.jacoco.org/jacoco/trunk/doc/counters.html).
 PIT's declared target scope, operators and machine-readable outcomes follow its
 [Maven configuration](https://pitest.org/quickstart/maven/) and
 [JUnit 5 integration](https://github.com/pitest/pitest-junit5-plugin).
-The CI artifact declaration follows [GitLab's JaCoCo integration](https://docs.gitlab.com/ci/testing/code_coverage/jacoco/).
+The original GitLab artifact declaration follows [GitLab's JaCoCo integration](https://docs.gitlab.com/ci/testing/code_coverage/jacoco/).
+The active workflow is `.github/workflows/tests.yml`; `hosted-ci.md` links its actual run.
