@@ -4,6 +4,15 @@ Requirements/rationale: `requirements.md`; initial plan/targets: `plan.md`; insp
 defect decisions: `review.md`; quantitative interpretation/limitations: `analysis.md`.
 The result snapshots in `results/` are retained evidence, not a substitute for executable tests.
 
+If using the accompanying archive rather than a hosted clone, unzip it and restore the Git
+history from its top-level bundle (the `testing-project/` directory is also a readable snapshot):
+
+```bash
+git clone history.bundle restored-project
+cd restored-project
+git checkout testing-r001
+```
+
 ## Run from repository root
 
 Use Java 21, Python 3 and the supplied Maven wrapper (Maven 3.9.9):
@@ -24,6 +33,7 @@ The entrypoint stops on any Maven or quality-gate failure. Its outputs are Suref
 ./mvnw -Dtest=ShipmentConcurrencyTest test
 ./mvnw -Dtest=ChargePropertiesTest test
 ./mvnw -Dtest=ShipmentStateModelTest test
+python3 -B ci/summarise_timings.py
 ```
 
 The selected GitLab CI job invokes the same entrypoint and declares test/coverage artifacts.
