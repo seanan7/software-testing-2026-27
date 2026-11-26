@@ -1,0 +1,7 @@
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="de.campusshop.dispatch.mapper.ManifestMapperTest" time="0.096" tests="5" errors="0" skipped="0" failures="0">
+  <testcase name="mapsExternalTariffToDomainModel" classname="de.campusshop.dispatch.mapper.ManifestMapperTest" time="0.0" />
+  <testcase name="mapsEveryStoredAttributeToRecordAndSummary" classname="de.campusshop.dispatch.mapper.ManifestMapperTest" time="0.082" />
+  <testcase name="rejectsIncompleteTariffs" classname="de.campusshop.dispatch.mapper.ManifestMapperTest" time="0.01" />
+  <testcase name="mapsEveryRatedParcelField" classname="de.campusshop.dispatch.mapper.ManifestMapperTest" time="0.001" />
+  <testcase name="mapsUnratedParcelWithoutInventingCharges" classname="de.campusshop.dispatch.mapper.ManifestMapperTest" time="0.001" />
+</testsuite>

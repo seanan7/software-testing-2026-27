@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.4.1</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>de.campusshop</groupId>
+    <artifactId>dispatch-manifest-hub</artifactId>
+    <version>cw2</version>
+    <name>dispatch-manifest-hub</name>
+    <description>CampusShop DataHub Dispatch Manifest Hub (REST, tariff pricing, S3 and DynamoDB)</description>
+
+    <properties>
+        <java.version>21</java.version>
+        <aws.sdk.version>2.29.52</aws.sdk.version>
+        <jacocoArgLine></jacocoArgLine>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>software.amazon.awssdk</groupId>
+                <artifactId>bom</artifactId>
+                <version>${aws.sdk.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>s3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>dynamodb</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <!-- Allow Mockito/ByteBuddy to run on newer JDKs not yet on its known list. -->
+                    <argLine>@{jacocoArgLine} -Dnet.bytebuddy.experimental=true -XX:+EnableDynamicAgentLoading</argLine>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.14</version>
+                <configuration><propertyName>jacocoArgLine</propertyName></configuration>
+                <executions>
+                    <execution><goals><goal>prepare-agent</goal></goals></execution>
+                    <execution><id>coverage-report</id><phase>verify</phase><goals><goal>report</goal></goals></execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>1.18.2</version>
+                <dependencies>
+                    <dependency><groupId>org.pitest</groupId><artifactId>pitest-junit5-plugin</artifactId><version>1.2.2</version></dependency>
+                </dependencies>
+                <configuration>
+                    <targetClasses>
+                        <param>de.campusshop.dispatch.service.*</param>
+                        <param>de.campusshop.dispatch.mapper.*</param>
+                        <param>de.campusshop.dispatch.client.*</param>
+                        <param>de.campusshop.dispatch.repository.*</param>
+                    </targetClasses>
+                    <targetTests><param>de.campusshop.dispatch.*</param></targetTests>
+                    <excludedTestClasses><param>*PerformanceTest</param><param>*ConcurrencyTest</param></excludedTestClasses>
+                    <threads>2</threads><timeoutConstant>6000</timeoutConstant>
+                    <timestampedReports>false</timestampedReports>
+                    <outputFormats><param>HTML</param><param>XML</param></outputFormats>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

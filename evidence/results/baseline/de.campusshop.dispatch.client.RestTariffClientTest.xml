@@ -1,0 +1,42 @@
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="de.campusshop.dispatch.client.RestTariffClientTest" time="2.324" tests="10" errors="0" skipped="0" failures="0">
+  <testcase name="mapsA200ResponseAndUsesTheConfiguredUrl" classname="de.campusshop.dispatch.client.RestTariffClientTest" time="1.898">
+    <system-out>Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+</system-out>
+  </testcase>
+  <testcase name="errorsReturnNoTariff(int)[1]" classname="de.campusshop.dispatch.client.RestTariffClientTest" time="0.06">
+    <system-out>11:03:36.049 [main] WARN de.campusshop.dispatch.client.RestTariffClient -- Unable to resolve tariff TRF-1 (NotFound)
+</system-out>
+  </testcase>
+  <testcase name="errorsReturnNoTariff(int)[2]" classname="de.campusshop.dispatch.client.RestTariffClientTest" time="0.016">
+    <system-out>11:03:36.078 [main] WARN de.campusshop.dispatch.client.RestTariffClient -- Unable to resolve tariff TRF-1 (InternalServerError)
+</system-out>
+  </testcase>
+  <testcase name="errorsReturnNoTariff(int)[3]" classname="de.campusshop.dispatch.client.RestTariffClientTest" time="0.005">
+    <system-out>11:03:36.085 [main] WARN de.campusshop.dispatch.client.RestTariffClient -- Unable to resolve tariff TRF-1 (ServiceUnavailable)
+</system-out>
+  </testcase>
+  <testcase name="connectionRefusalReturnsNoTariff" classname="de.campusshop.dispatch.client.RestTariffClientTest" time="0.004">
+    <system-out>11:03:36.089 [main] WARN de.campusshop.dispatch.client.RestTariffClient -- Unable to resolve tariff TRF-1 (ResourceAccessException)
+</system-out>
+  </testcase>
+  <testcase name="enforcesTheConfiguredReadTimeout" classname="de.campusshop.dispatch.client.RestTariffClientTest" time="0.16">
+    <system-out>11:03:36.246 [main] WARN de.campusshop.dispatch.client.RestTariffClient -- Unable to resolve tariff TRF-1 (ResourceAccessException)
+</system-out>
+  </testcase>
+  <testcase name="invalidOrMismatchedSuccessResponsesAreUnrated(String)[1]" classname="de.campusshop.dispatch.client.RestTariffClientTest" time="0.016">
+    <system-out>11:03:36.267 [main] WARN de.campusshop.dispatch.client.RestTariffClient -- Unable to resolve tariff TRF-1 (RestClientException)
+</system-out>
+  </testcase>
+  <testcase name="invalidOrMismatchedSuccessResponsesAreUnrated(String)[2]" classname="de.campusshop.dispatch.client.RestTariffClientTest" time="0.007">
+    <system-out>11:03:36.275 [main] WARN de.campusshop.dispatch.client.RestTariffClient -- Unable to resolve tariff TRF-1 (IllegalArgumentException)
+</system-out>
+  </testcase>
+  <testcase name="invalidOrMismatchedSuccessResponsesAreUnrated(String)[3]" classname="de.campusshop.dispatch.client.RestTariffClientTest" time="0.007">
+    <system-out>11:03:36.284 [main] WARN de.campusshop.dispatch.client.RestTariffClient -- Unable to resolve tariff TRF-1 (IllegalArgumentException)
+</system-out>
+  </testcase>
+  <testcase name="invalidOrMismatchedSuccessResponsesAreUnrated(String)[4]" classname="de.campusshop.dispatch.client.RestTariffClientTest" time="0.008">
+    <system-out>11:03:36.292 [main] WARN de.campusshop.dispatch.client.RestTariffClient -- Tariff response did not match requested code TRF-1
+</system-out>
+  </testcase>
+</testsuite>
