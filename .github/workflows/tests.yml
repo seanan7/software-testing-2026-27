@@ -1,0 +1,42 @@
+name: Tests and quality gates
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Functional tests, coverage and mutation analysis
+        run: bash ci/test.sh
+      - name: Verify positive and negative quality gates
+        run: python3 -B ci/probe_gates.py
+      - name: Retain test and quality evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-evidence
+          retention-days: 30
+          if-no-files-found: warn
+          path: |
+            target/surefire-reports/TEST-*.xml
+            target/site/jacoco/
+            target/pit-reports/
+            target/evidence/
+            evidence/results/ci-gates.json
