@@ -1,0 +1,65 @@
+{
+  "scope": "gate component probes, not product faults",
+  "cases": [
+    {
+      "case": "recorded-actual-pass",
+      "expected_exit": 0,
+      "observed_exit": 0,
+      "classification": "recorded actual evidence"
+    },
+    {
+      "case": "missing-cut-report",
+      "expected_exit": 1,
+      "observed_exit": 1,
+      "classification": "deliberate evidence-gate corruption"
+    },
+    {
+      "case": "missing-history-report",
+      "expected_exit": 1,
+      "observed_exit": 1,
+      "classification": "deliberate evidence-gate corruption"
+    },
+    {
+      "case": "missing-fault-case",
+      "expected_exit": 1,
+      "observed_exit": 1,
+      "classification": "deliberate evidence-gate corruption"
+    },
+    {
+      "case": "wrong-persistence-bit",
+      "expected_exit": 1,
+      "observed_exit": 1,
+      "classification": "deliberate evidence-gate corruption"
+    },
+    {
+      "case": "unreached-fault",
+      "expected_exit": 1,
+      "observed_exit": 1,
+      "classification": "deliberate evidence-gate corruption"
+    },
+    {
+      "case": "incorrect-checker-calibration",
+      "expected_exit": 1,
+      "observed_exit": 1,
+      "classification": "deliberate evidence-gate corruption"
+    },
+    {
+      "case": "incorrect-history-classification",
+      "expected_exit": 1,
+      "observed_exit": 1,
+      "classification": "deliberate evidence-gate corruption"
+    },
+    {
+      "case": "wrong-probe-reading",
+      "expected_exit": 1,
+      "observed_exit": 1,
+      "classification": "deliberate evidence-gate corruption"
+    },
+    {
+      "case": "unchecked-raw-bytes",
+      "expected_exit": 1,
+      "observed_exit": 1,
+      "classification": "deliberate evidence-gate corruption"
+    }
+  ]
+}

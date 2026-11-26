@@ -104,7 +104,10 @@
                         <param>de.campusshop.dispatch.repository.*</param>
                     </targetClasses>
                     <targetTests><param>de.campusshop.dispatch.*</param></targetTests>
-                    <excludedTestClasses><param>*PerformanceTest</param><param>*ConcurrencyTest</param></excludedTestClasses>
+                    <excludedTestClasses>
+                        <param>*PerformanceTest</param><param>*ConcurrencyTest</param>
+                        <param>*FailureCutExperimentTest</param><param>*ConcurrentHistoryTest</param>
+                    </excludedTestClasses>
                     <threads>2</threads><timeoutConstant>6000</timeoutConstant>
                     <timestampedReports>false</timestampedReports>
                     <outputFormats><param>HTML</param><param>XML</param></outputFormats>

@@ -1,0 +1,370 @@
+{
+  "scope": "finite in-memory experiments; not deployment or probability estimates",
+  "fault_executions": 192,
+  "scenario_count": 16,
+  "payload_facets": 12,
+  "torn_executions": 72,
+  "torn_scenarios": 6,
+  "state_counts": {
+    "11": 36,
+    "00": 84,
+    "10": 24,
+    "01": 48
+  },
+  "basis_training": "one smallest payload facet; all 16 fault scenarios",
+  "basis_validation": "same fault scenarios crossed with 11 additional payload facets",
+  "minimum_probe_count": 2,
+  "all_minimum_bases": [
+    [
+      "summary",
+      "archive-inventory"
+    ],
+    [
+      "archive-inventory",
+      "index-inventory"
+    ]
+  ],
+  "all_smaller_subsets_rejected": true,
+  "ablation": [
+    {
+      "name": "return-only",
+      "probes": [
+        "return"
+      ],
+      "separated_state_pairs": 0,
+      "total_state_pairs": 6,
+      "identified_torn_executions": 0,
+      "total_torn_executions": 72
+    },
+    {
+      "name": "API-only",
+      "probes": [
+        "return",
+        "summary",
+        "manifest"
+      ],
+      "separated_state_pairs": 5,
+      "total_state_pairs": 6,
+      "identified_torn_executions": 48,
+      "total_torn_executions": 72
+    },
+    {
+      "name": "synthesized-basis",
+      "probes": [
+        "summary",
+        "archive-inventory"
+      ],
+      "separated_state_pairs": 6,
+      "total_state_pairs": 6,
+      "identified_torn_executions": 72,
+      "total_torn_executions": 72
+    },
+    {
+      "name": "all-probes",
+      "probes": [
+        "return",
+        "summary",
+        "manifest",
+        "archive-inventory",
+        "index-inventory"
+      ],
+      "separated_state_pairs": 6,
+      "total_state_pairs": 6,
+      "identified_torn_executions": 72,
+      "total_torn_executions": 72
+    }
+  ],
+  "minimum_payload_witnesses": [
+    {
+      "scenario": "archive-after",
+      "facet": {
+        "parcels": 1,
+        "padding": false,
+        "unicode": false
+      },
+      "finding": "ORPHAN_ARCHIVE",
+      "trace": [
+        "LOOKUP:BEFORE",
+        "LOOKUP:AFTER",
+        "ARCHIVE_PUT:BEFORE",
+        "ARCHIVE_PUT:AFTER"
+      ],
+      "state": [
+        true,
+        false
+      ]
+    },
+    {
+      "scenario": "index-after",
+      "facet": {
+        "parcels": 1,
+        "padding": false,
+        "unicode": false
+      },
+      "finding": "DANGLING_INDEX",
+      "trace": [
+        "LOOKUP:BEFORE",
+        "LOOKUP:AFTER",
+        "ARCHIVE_PUT:BEFORE",
+        "ARCHIVE_PUT:AFTER",
+        "INDEX_PUT:BEFORE",
+        "INDEX_PUT:AFTER",
+        "ARCHIVE_REMOVE:BEFORE",
+        "ARCHIVE_REMOVE:AFTER"
+      ],
+      "state": [
+        false,
+        true
+      ]
+    },
+    {
+      "scenario": "index-before-cleanup-before",
+      "facet": {
+        "parcels": 1,
+        "padding": false,
+        "unicode": false
+      },
+      "finding": "ORPHAN_ARCHIVE",
+      "trace": [
+        "LOOKUP:BEFORE",
+        "LOOKUP:AFTER",
+        "ARCHIVE_PUT:BEFORE",
+        "ARCHIVE_PUT:AFTER",
+        "INDEX_PUT:BEFORE",
+        "ARCHIVE_REMOVE:BEFORE"
+      ],
+      "state": [
+        true,
+        false
+      ]
+    },
+    {
+      "scenario": "index-after-cleanup-after",
+      "facet": {
+        "parcels": 1,
+        "padding": false,
+        "unicode": false
+      },
+      "finding": "DANGLING_INDEX",
+      "trace": [
+        "LOOKUP:BEFORE",
+        "LOOKUP:AFTER",
+        "ARCHIVE_PUT:BEFORE",
+        "ARCHIVE_PUT:AFTER",
+        "INDEX_PUT:BEFORE",
+        "INDEX_PUT:AFTER",
+        "ARCHIVE_REMOVE:BEFORE",
+        "ARCHIVE_REMOVE:AFTER"
+      ],
+      "state": [
+        false,
+        true
+      ]
+    },
+    {
+      "scenario": "delete-archive-after",
+      "facet": {
+        "parcels": 1,
+        "padding": false,
+        "unicode": false
+      },
+      "finding": "DANGLING_INDEX",
+      "trace": [
+        "ARCHIVE_REMOVE:BEFORE",
+        "ARCHIVE_REMOVE:AFTER"
+      ],
+      "state": [
+        false,
+        true
+      ]
+    },
+    {
+      "scenario": "delete-index-before",
+      "facet": {
+        "parcels": 1,
+        "padding": false,
+        "unicode": false
+      },
+      "finding": "DANGLING_INDEX",
+      "trace": [
+        "ARCHIVE_REMOVE:BEFORE",
+        "ARCHIVE_REMOVE:AFTER",
+        "INDEX_REMOVE:BEFORE"
+      ],
+      "state": [
+        false,
+        true
+      ]
+    }
+  ],
+  "checker_calibration_cases": 24,
+  "checker_calibration_accepts": 7,
+  "actual_histories": 14,
+  "nonlinearizable_histories": 8,
+  "two_instance_counterexamples": 4,
+  "stale_index_counterexamples": 4,
+  "minimum_history_witnesses": [
+    {
+      "name": "two-instances/C0-C1-P0-P1",
+      "minimum_operations": 2,
+      "operations": [
+        {
+          "actor": 0,
+          "invocation": 1,
+          "response": 3,
+          "manifest": "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+          "outcome": "CREATED"
+        },
+        {
+          "actor": 1,
+          "invocation": 2,
+          "response": 4,
+          "manifest": "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+          "outcome": "CREATED"
+        }
+      ]
+    },
+    {
+      "name": "two-instances/C0-C1-P1-P0",
+      "minimum_operations": 2,
+      "operations": [
+        {
+          "actor": 0,
+          "invocation": 1,
+          "response": 4,
+          "manifest": "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+          "outcome": "CREATED"
+        },
+        {
+          "actor": 1,
+          "invocation": 2,
+          "response": 3,
+          "manifest": "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+          "outcome": "CREATED"
+        }
+      ]
+    },
+    {
+      "name": "two-instances/C1-C0-P1-P0",
+      "minimum_operations": 2,
+      "operations": [
+        {
+          "actor": 0,
+          "invocation": 2,
+          "response": 4,
+          "manifest": "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+          "outcome": "CREATED"
+        },
+        {
+          "actor": 1,
+          "invocation": 1,
+          "response": 3,
+          "manifest": "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+          "outcome": "CREATED"
+        }
+      ]
+    },
+    {
+      "name": "two-instances/C1-C0-P0-P1",
+      "minimum_operations": 2,
+      "operations": [
+        {
+          "actor": 0,
+          "invocation": 1,
+          "response": 3,
+          "manifest": "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+          "outcome": "CREATED"
+        },
+        {
+          "actor": 1,
+          "invocation": 2,
+          "response": 4,
+          "manifest": "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+          "outcome": "CREATED"
+        }
+      ]
+    },
+    {
+      "name": "one-instance-lag-1-calls-2",
+      "minimum_operations": 2,
+      "operations": [
+        {
+          "actor": 0,
+          "invocation": 1,
+          "response": 2,
+          "manifest": "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+          "outcome": "CREATED"
+        },
+        {
+          "actor": 1,
+          "invocation": 3,
+          "response": 4,
+          "manifest": "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+          "outcome": "CREATED"
+        }
+      ]
+    },
+    {
+      "name": "one-instance-lag-1-calls-3",
+      "minimum_operations": 2,
+      "operations": [
+        {
+          "actor": 0,
+          "invocation": 1,
+          "response": 2,
+          "manifest": "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+          "outcome": "CREATED"
+        },
+        {
+          "actor": 1,
+          "invocation": 3,
+          "response": 4,
+          "manifest": "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+          "outcome": "CREATED"
+        }
+      ]
+    },
+    {
+      "name": "one-instance-lag-2-calls-2",
+      "minimum_operations": 2,
+      "operations": [
+        {
+          "actor": 0,
+          "invocation": 1,
+          "response": 2,
+          "manifest": "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+          "outcome": "CREATED"
+        },
+        {
+          "actor": 1,
+          "invocation": 3,
+          "response": 4,
+          "manifest": "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+          "outcome": "CREATED"
+        }
+      ]
+    },
+    {
+      "name": "one-instance-lag-2-calls-3",
+      "minimum_operations": 2,
+      "operations": [
+        {
+          "actor": 0,
+          "invocation": 1,
+          "response": 2,
+          "manifest": "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+          "outcome": "CREATED"
+        },
+        {
+          "actor": 1,
+          "invocation": 3,
+          "response": 4,
+          "manifest": "4b1d2c3e-5f60-4a71-8b92-a3b4c5d6e7f8",
+          "outcome": "CREATED"
+        }
+      ]
+    }
+  ],
+  "all_predictions_and_independent_checks": "PASS",
+  "safety_conclusion": "The stronger cross-store and cross-instance safety objectives have counterexamples."
+}
